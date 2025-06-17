@@ -58,6 +58,7 @@
             overflow-x: hidden;
         }
 
+
         /* Animated background particles */
         body::before {
             content: '';
@@ -1419,62 +1420,65 @@
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .social-link {
-            width: 45px;
-            height: 45px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(78, 205, 196, 0.3);
+            background: rgba(31, 175, 237, 0.05);
+            border: 2px solid rgba(31, 175, 237, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #4ecdc4;
+            color: #1fafed;
             text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             backdrop-filter: blur(10px);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            box-shadow: 0 0 8px rgba(31, 175, 237, 0.1);
         }
 
-        /* Hover effect base */
         .social-link:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
-            background: transparent;
+            transform: translateY(-6px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(31, 175, 237, 0.4);
+            background: rgba(31, 175, 237, 0.1);
         }
 
-        /* Brand-specific hover colors */
+        /* Brand-specific hover effects */
         .social-link.facebook:hover {
             color: #1877f2;
-            /* Facebook Blue */
             border-color: #1877f2;
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
         }
 
         .social-link.instagram:hover {
             color: #e1306c;
-            /* Instagram Pink */
             border-color: #e1306c;
+            box-shadow: 0 8px 25px rgba(225, 48, 108, 0.4);
         }
 
         .social-link.twitter:hover {
             color: #1da1f2;
-            /* Twitter Blue */
             border-color: #1da1f2;
+            box-shadow: 0 8px 25px rgba(29, 161, 242, 0.4);
         }
 
         .social-link.linkedin:hover {
             color: #0077b5;
-            /* LinkedIn Blue */
             border-color: #0077b5;
+            box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
         }
 
         .social-link.github:hover {
             color: #333;
-            /* GitHub Dark Gray */
             border-color: #333;
+            box-shadow: 0 8px 25px rgba(51, 51, 51, 0.4);
         }
+
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -2043,7 +2047,6 @@
             right: 0;
             width: 320px;
             background: rgba(255, 255, 255, 0.05);
-            /* translucent */
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.18);
