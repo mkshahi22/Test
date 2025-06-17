@@ -1624,17 +1624,17 @@
             position: fixed;
             bottom: 90px;
             left: 25px;
-            background: linear-gradient(135deg, #1f26ed 0%, #1fafed 100%);
-            color: white;
+            background: linear-gradient(135deg, #1c87d4 0%, #1fafed 100%);
+            color: #ffffff;
             border: none;
-            padding: 12px;
+            padding: 16px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 17px;
             z-index: 1600;
             transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(31, 38, 237, 0.5);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(31, 175, 237, 0.4);
+            backdrop-filter: blur(12px);
         }
 
         .wishlist-toggle:hover {
@@ -1933,8 +1933,8 @@
             .wishlist-toggle {
                 bottom: 60px;
                 left: 15px;
-                padding: 10px;
-                font-size: 14px;
+                padding: 12px;
+                font-size: 15px;
             }
 
             .wishlist-item {
@@ -1963,8 +1963,8 @@
             .wishlist-toggle {
                 bottom: 40px;
                 left: 10px;
-                padding: 8px;
-                font-size: 12px;
+                padding: 10px;
+                font-size: 13px;
             }
 
             .wishlist-panel {
@@ -1992,7 +1992,6 @@
             }
         }
 
-        /* Notification System Styles */
         /* Notification System Styles */
         .notification-container {
             position: fixed;
@@ -2629,6 +2628,11 @@
             } catch (error) {
                 console.error('Error fetching movies:', error);
                 showError('Failed to fetch movies. Please try again.');
+
+                setTimeout(() => {
+                    showError('Check your internet connection.');
+                }, 4000);
+
                 return null;
             } finally {
                 showLoading(false);
@@ -4292,17 +4296,17 @@ border: 1px solid rgba(255, 255, 255, 0.15);
     position: fixed;
     bottom: 90px;
     left: 25px;
-    background: linear-gradient(135deg, #1f26ed 0%, #1fafed 100%);
-    color: white;
+    background: linear-gradient(135deg, #1c87d4 0%, #1fafed 100%);
+    color: #ffffff;
     border: none;
-    padding: 12px;
+    padding: 16px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 17px;
     z-index: 1600;
     transition: all 0.4s ease;
-    box-shadow: 0 8px 25px rgba(31, 38, 237, 0.5);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(31, 175, 237, 0.4);
+    backdrop-filter: blur(12px);
 }
 
 .wishlist-toggle:hover {
@@ -4487,11 +4491,12 @@ border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .wishlist-toggle {
-        padding: 10px;
-        font-size: 14px;
         bottom: 60px;
         left: 15px;
+        padding: 12px;
+        font-size: 15px;
     }
+}
 
     .wishlist-item {
         padding: 15px;
@@ -4515,13 +4520,12 @@ border: 1px solid rgba(255, 255, 255, 0.15);
     }
 }
  @media (max-width: 480px) {
-            .wishlist-toggle {
-                bottom: 40px;
-                left: 10px;
-                padding: 8px;
-                font-size: 12px;
-            }
-
+    .wishlist-toggle {
+        bottom: 40px;
+        left: 10px;
+        padding: 10px;
+        font-size: 13px;
+    }
             .wishlist-panel {
                 padding: 20px;
             }
