@@ -461,7 +461,7 @@
             width: 60px;
             height: 60px;
             border: 4px solid rgba(255, 255, 255, 0.1);
-            border-left: 4px solid #4ecdc4;
+            /* border-left: 4px solid #4ecdc4; */
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto;
@@ -534,6 +534,33 @@
         .movie-card:hover .movie-poster {
             transform: scale(1.08);
         }
+
+        /* Medium Devices (Tablets, 768px and down) */
+        @media (max-width: 768px) {
+            .movie-poster {
+                height: 320px;
+            }
+        }
+
+        /* Small Devices (Large phones, 576px and down) */
+        @media (max-width: 576px) {
+            .movie-poster {
+                height: 250px;
+            }
+
+            .movie-card:hover .movie-poster {
+                transform: scale(1.04);
+                /* less aggressive zoom on small screens */
+            }
+        }
+
+        /* Extra Small Devices (like very small phones) */
+        @media (max-width: 400px) {
+            .movie-poster {
+                height: 200px;
+            }
+        }
+
 
         .movie-info {
             padding: 25px;
@@ -1084,7 +1111,7 @@
             background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
             color: white;
             border: none;
-            padding: 18px;
+            padding: 15px;
             border-radius: 50%;
             cursor: pointer;
             font-size: 15px;
@@ -1095,37 +1122,41 @@
         }
 
         .downloads-toggle:hover {
-            transform: scale(1.15);
+            transform: scale(1);
             box-shadow: 0 12px 35px rgba(78, 205, 196, 0.5);
         }
 
         .download-item {
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
+            background: rgba(31, 175, 237, 0.05);
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(31, 175, 237, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             transition: all 0.3s ease;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
         }
 
         .download-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateX(-5px);
+            background: rgba(31, 175, 237, 0.1);
+            transform: translateX(-4px) scale(1.01);
+            box-shadow: 0 6px 20px rgba(31, 175, 237, 0.25);
         }
 
         .download-item-title {
             font-weight: 700;
-            color: #4ecdc4;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+            color: #1fafed;
+            margin-bottom: 6px;
+            font-size: 1.15rem;
+            letter-spacing: 0.3px;
         }
 
         .download-item-info {
             font-size: 13px;
-            color: #ccc;
-            margin-bottom: 12px;
-            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
         @keyframes fadeIn {
@@ -1341,7 +1372,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: pulse 3s ease-in-out infinite;
         }
 
         .footer-tagline {
@@ -1458,11 +1488,13 @@
         .footer-divider {
             width: 120px;
             height: 3px;
-            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
+            background: linear-gradient(135deg, #1fafed 0%, #6ffafc 50%, #1c87d4 100%);
             margin: 0 auto 20px;
             border-radius: 2px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0 8px rgba(31, 175, 237, 0.2);
+            backdrop-filter: blur(3px);
         }
 
         .footer-divider::after {
@@ -1472,12 +1504,14 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            animation: shimmer 3s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2.5s linear infinite;
+            opacity: 0.8;
+            pointer-events: none;
         }
 
         .footer-bottom p {
-            color: rgba(255, 255, 255, 0.65);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.95rem;
             display: flex;
             align-items: center;
@@ -1485,34 +1519,45 @@
             flex-wrap: wrap;
             gap: 8px;
             line-height: 1.6;
+            text-align: center;
         }
 
         .pulse-heart {
             color: #ff6b6b;
-            animation: heartbeat 1.6s ease-in-out infinite;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            font-size: 1rem;
         }
 
         .creator-name {
-            color: #4ecdc4;
-            font-weight: 600;
-            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #1fafed 0%, #6ffafc 100%);
+            background-size: 200% 200%;
             background-clip: text;
-            animation: gradientShift 5s ease-in-out infinite;
-            text-shadow: 0 2px 4px rgba(78, 205, 196, 0.3);
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease-in-out infinite;
+            text-shadow: 0 2px 5px rgba(31, 175, 237, 0.35);
             cursor: pointer;
+            transition: text-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .creator-name:hover {
+            text-shadow: 0 4px 10px rgba(31, 175, 237, 0.6);
+            transform: scale(1.05);
         }
 
         .brand-name {
-            color: #ff6b6b;
+            color: #1fafed;
             font-weight: 700;
             letter-spacing: 0.5px;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .brand-name:hover {
             color: #ffffff;
+            text-shadow: 0 2px 6px rgba(31, 175, 237, 0.4);
         }
 
         @keyframes heartbeat {
@@ -1582,10 +1627,10 @@
             background: linear-gradient(135deg, #1f26ed 0%, #1fafed 100%);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 12px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 15px;
             z-index: 1600;
             transition: all 0.4s ease;
             box-shadow: 0 8px 25px rgba(31, 38, 237, 0.5);
@@ -1593,7 +1638,7 @@
         }
 
         .wishlist-toggle:hover {
-            transform: scale(1.15);
+            transform: scale(1.08);
             box-shadow: 0 12px 35px rgba(31, 175, 237, 0.5);
         }
 
@@ -1685,6 +1730,30 @@
             z-index: 2;
         }
 
+        /* Tablets and below (768px) */
+        @media (max-width: 768px) {
+            .wishlist-item-poster {
+                width: 50px;
+                height: 75px;
+            }
+        }
+
+        /* Mobile phones (576px and below) */
+        @media (max-width: 576px) {
+            .wishlist-item-poster {
+                width: 45px;
+                height: 68px;
+            }
+        }
+
+        /* Very small devices (400px and below) */
+        @media (max-width: 400px) {
+            .wishlist-item-poster {
+                width: 40px;
+                height: 60px;
+            }
+        }
+
         .wishlist-item:hover .wishlist-item-poster {
             transform: scale(1.05);
         }
@@ -1724,11 +1793,8 @@
         /* Remove Button */
         .wishlist-remove-btn {
             background: rgba(237, 31, 31, 0.15);
-            /* light red background */
             border: 2px solid rgba(237, 31, 31, 0.3);
-            /* soft red border */
             color: #ed1f1f;
-            /* red text */
             font-size: 18px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1745,7 +1811,6 @@
         .wishlist-remove-btn:hover {
             color: #fff;
             background: linear-gradient(135deg, #ed1f1f, #a70000);
-            /* strong red gradient */
             border-color: transparent;
             transform: scale(1.1);
             box-shadow: 0 4px 15px rgba(237, 31, 31, 0.4);
@@ -1868,8 +1933,8 @@
             .wishlist-toggle {
                 bottom: 60px;
                 left: 15px;
-                padding: 14px;
-                font-size: 18px;
+                padding: 10px;
+                font-size: 14px;
             }
 
             .wishlist-item {
@@ -1898,8 +1963,8 @@
             .wishlist-toggle {
                 bottom: 40px;
                 left: 10px;
-                padding: 12px;
-                font-size: 16px;
+                padding: 8px;
+                font-size: 12px;
             }
 
             .wishlist-panel {
@@ -1919,8 +1984,11 @@
 
             .wishlist-remove-btn {
                 position: absolute;
-                top: 15px;
-                right: 15px;
+                top: 25px;
+                left: 25px;
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
             }
         }
 
@@ -2186,7 +2254,7 @@
     <div class="notification-container">
         <button class="notification-toggle" aria-label="Toggle notifications">
             <i class="fas fa-bell"></i>
-            <span class="notification-badge">6</span>
+            <span class="notification-badge">10</span>
         </button>
 
         <div class="notification-panel">
@@ -2452,22 +2520,22 @@
 
         infiniteScrollToggle.style.cssText = `
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    bottom: 16px;
+    left: 16px;
     z-index: 1000;
-    padding: 12px 20px;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #667eea, #764ba2, #ff6b6b);
+    padding: 6px 14px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #1fafed, #1c87d4, #1ce7eb);
     color: white;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
     border: none;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(31, 175, 237, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(5px);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 `;
 
         infiniteScrollToggle.title = "Toggle Infinite Scroll";
@@ -2475,12 +2543,14 @@
         // Hover animation
         infiniteScrollToggle.addEventListener('mouseenter', () => {
             infiniteScrollToggle.style.transform = 'scale(1.07)';
-            infiniteScrollToggle.style.boxShadow = '0 10px 30px rgba(0,0,0,0.4)';
+            infiniteScrollToggle.style.boxShadow = '0 10px 25px rgba(31, 175, 237, 0.45)';
         });
+
         infiniteScrollToggle.addEventListener('mouseleave', () => {
             infiniteScrollToggle.style.transform = 'scale(1)';
-            infiniteScrollToggle.style.boxShadow = '0 6px 20px rgba(0,0,0,0.3)';
+            infiniteScrollToggle.style.boxShadow = '0 6px 18px rgba(31, 175, 237, 0.3)';
         });
+
 
         // Append to body
         document.body.appendChild(infiniteScrollToggle);
@@ -2531,13 +2601,19 @@
             infiniteScrollEnabled = !infiniteScrollEnabled;
 
             if (infiniteScrollEnabled) {
-                infiniteScrollToggle.textContent = '⏸️ Disable Auto-Load';
-                infiniteScrollToggle.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a24)';
-                showSuccessMessage('Auto-load enabled! Scroll down to load more movies automatically.');
+                infiniteScrollToggle.textContent = '⏸️ Auto-Load On';
+                infiniteScrollToggle.style.background = 'linear-gradient(135deg, #1fafed, #20c997)';
+                infiniteScrollToggle.style.color = '#ffffff';
+                infiniteScrollToggle.style.boxShadow = '0 8px 20px rgba(31, 175, 237, 0.3)';
+                infiniteScrollToggle.style.backdropFilter = 'blur(10px)';
+                showSuccessMessage('✨ Auto-load enabled! Scroll to load more movies.');
             } else {
-                infiniteScrollToggle.textContent = '🔄 Enable Auto-Load';
-                infiniteScrollToggle.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
-                showSuccessMessage('Auto-load disabled. Use pagination buttons to navigate.');
+                infiniteScrollToggle.textContent = '🔄 Auto-Load Off';
+                infiniteScrollToggle.style.background = 'linear-gradient(135deg, #3f51b5, #5f2c82)';
+                infiniteScrollToggle.style.color = '#ffffff';
+                infiniteScrollToggle.style.boxShadow = '0 6px 18px rgba(95, 44, 130, 0.3)';
+                infiniteScrollToggle.style.backdropFilter = 'blur(8px)';
+                showSuccessMessage('⚠️ Auto-load disabled. Use pagination buttons.');
             }
         }
 
@@ -4219,10 +4295,10 @@ border: 1px solid rgba(255, 255, 255, 0.15);
     background: linear-gradient(135deg, #1f26ed 0%, #1fafed 100%);
     color: white;
     border: none;
-    padding: 15px;
+    padding: 12px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 15px;
     z-index: 1600;
     transition: all 0.4s ease;
     box-shadow: 0 8px 25px rgba(31, 38, 237, 0.5);
@@ -4230,7 +4306,7 @@ border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .wishlist-toggle:hover {
-    transform: scale(1.15);
+    transform: scale(1.08);
     box-shadow: 0 12px 35px rgba(31, 175, 237, 0.5);
 }
 
@@ -4411,8 +4487,8 @@ border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .wishlist-toggle {
-        padding: 12px;
-        font-size: 12px;
+        padding: 10px;
+        font-size: 14px;
         bottom: 60px;
         left: 15px;
     }
@@ -4442,8 +4518,8 @@ border: 1px solid rgba(255, 255, 255, 0.15);
             .wishlist-toggle {
                 bottom: 40px;
                 left: 10px;
-                padding: 12px;
-                font-size: 16px;
+                padding: 8px;
+                font-size: 12px;
             }
 
             .wishlist-panel {
@@ -4463,8 +4539,11 @@ border: 1px solid rgba(255, 255, 255, 0.15);
 
             .wishlist-remove-btn {
                 position: absolute;
-                top: 15px;
-                right: 15px;
+                top: 25px;
+                left: 25px;
+                width: 20px;
+            height: 20px;
+            font-size: 10px;
             }
         }
         `;
