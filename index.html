@@ -828,14 +828,14 @@
             position: absolute;
             bottom: 30px;
             left: 40px;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            background: linear-gradient(135deg, #1fafed 0%, #6ffafc 50%, #45b7d1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             z-index: 10;
+            transition: all 0.3s ease;
         }
 
         .modal-body {
@@ -2182,7 +2182,8 @@
                 <img src="logo.png" alt="StreamSage Logo" class="logo">
                 StreamSage
             </h1>
-            <p>Watch, Rate & Download Movies in HD, FHD & 4K</p>
+            <p><strong>Stream, Rate & Download</strong> Movies in <span style="color:#4ecdc4;">HD</span>, <span
+                    style="color:#45b7d1;">Full HD</span> & <span style="color:#1fafed;">4K Ultra</span> Quality</p>
         </div>
 
 
@@ -2672,23 +2673,23 @@
             switch (category) {
                 case 'trending':
                     url = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${page}`;
-                    categoryTitle = '🔥 Trending Movies This Week';
+                    categoryTitle = 'Trending Movies This Week';
                     break;
                 case 'popular':
                     url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`;
-                    categoryTitle = '⭐ Popular Movies';
+                    categoryTitle = 'Popular Movies';
                     break;
                 case 'top_rated':
                     url = `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&page=${page}`;
-                    categoryTitle = '🏆 Top Rated Movies';
+                    categoryTitle = 'Top Rated Movies';
                     break;
                 case 'now_playing':
                     url = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`;
-                    categoryTitle = '🎬 Now Playing';
+                    categoryTitle = 'Now Playing';
                     break;
                 case 'upcoming':
                     url = `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&page=${page}`;
-                    categoryTitle = '🔜 Upcoming Movies';
+                    categoryTitle = 'Upcoming Movies';
                     break;
                 case 'action':
                 case 'comedy':
@@ -2701,7 +2702,7 @@
                     break;
                 default:
                     url = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${page}`;
-                    categoryTitle = '🔥 Trending Movies This Week';
+                    categoryTitle = 'Trending Movies This Week';
             }
 
             const data = await fetchMovies(url);
@@ -2909,13 +2910,13 @@
 
         function getCategoryEmoji(category) {
             const emojis = {
-                'action': '💥',
-                'comedy': '😂',
-                'horror': '😱',
-                'romance': '💕',
-                'sci-fi': '🚀'
+                'action': '',
+                'comedy': '',
+                'horror': '',
+                'romance': '',
+                'sci-fi': ''
             };
-            return emojis[category] || '🎬';
+            return emojis[category] || '';
         }
 
         // Keyboard shortcuts
