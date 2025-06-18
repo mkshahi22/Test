@@ -99,6 +99,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 
+    <!-- <link rel="stylesheet" href="test.css"> -->
     <style>
         * {
             margin: 0 0px;
@@ -326,27 +327,25 @@
         }
 
         .btn-search {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            background-size: 200% 200%;
-            color: #00f0ff;
-            padding: 16px 28px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b, #ffcb05, #00c9ff, #92fe9d);
+            background-size: 400% 400%;
+            color: #fff;
+            padding: 18px 30px;
             font-size: 16px;
             font-weight: 700;
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            border: none;
             border-radius: 50px;
             cursor: pointer;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            box-shadow:
-                0 0 10px rgba(0, 240, 255, 0.2),
-                0 0 30px rgba(0, 240, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 65, 108, 0.4);
             transition: all 0.4s ease-in-out;
             text-transform: uppercase;
             letter-spacing: 1px;
             backdrop-filter: blur(12px);
             isolation: isolate;
-            animation: move-bg 8s ease infinite;
+            animation: move-bg 6s ease infinite;
         }
 
         .btn-search::before,
@@ -359,29 +358,29 @@
             left: -75%;
             z-index: 0;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, transparent 80%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 80%);
             transform: rotate(45deg);
-            animation: pulse-glow 5s infinite ease-in-out;
-            opacity: 0.4;
+            animation: pulse-glow 4s infinite ease-in-out;
+            opacity: 0.5;
             pointer-events: none;
         }
 
         .btn-search::after {
-            animation-delay: 2.5s;
+            animation-delay: 2s;
         }
 
         .btn-search:hover {
-            transform: translateY(-5px) scale(1.05);
+            transform: translateY(-6px) scale(1.06);
             box-shadow:
-                0 0 15px rgba(0, 240, 255, 0.4),
-                0 0 40px rgba(0, 240, 255, 0.25);
+                0 25px 55px rgba(255, 65, 108, 0.6),
+                0 0 35px rgba(255, 255, 255, 0.3),
+                0 0 15px rgba(255, 75, 43, 0.5);
             background-position: right center;
-            color: #ffffff;
         }
 
         .btn-search:active {
             transform: scale(0.96);
-            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.2);
         }
 
         .btn-search span {
@@ -390,7 +389,7 @@
             font-weight: 600;
             letter-spacing: 0.8px;
             font-family: 'Poppins', sans-serif;
-            text-shadow: 0 0 4px rgba(0, 240, 255, 0.3);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         /* Keyframes */
@@ -1885,25 +1884,25 @@
             right: 18px;
             font-size: 1.5rem;
             color: #1f26ed;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.06);
             border-radius: 50%;
             padding: 8px;
             z-index: 3;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            box-shadow: 0 3px 10px rgba(31, 38, 237, 0.12);
+            border: 1px solid rgba(31, 38, 237, 0.15);
         }
 
         .movie-card .wishlist-icon.filled {
-            background: transparent;
-            animation: heartPulse 1.5s ease-in-out;
+            background: rgba(31, 175, 237, 0.12);
             color: #1f26ed;
         }
 
         .movie-card .wishlist-icon:hover {
-            color: #c0c1c1;
-            background: transparent;
-            border-color: transparent;
+            color: #1f26ed;
+            background: rgba(31, 175, 237, 0.18);
+            box-shadow: 0 5px 14px rgba(31, 175, 237, 0.25);
         }
 
         /* Heart Pulse */
@@ -2016,8 +2015,15 @@
             .movie-card .wishlist-icon {
                 top: 12px;
                 right: 12px;
-                padding: 6px;
-                font-size: 1.2rem;
+                padding: 15px;
+                font-size: 1.5rem;
+            }
+
+            .wishlist-icon {
+                top: 12px;
+                right: 12px;
+                padding: 15px;
+                font-size: 1.5rem;
             }
         }
 
@@ -2200,8 +2206,8 @@
         }
 
         .notification-item .time {
-            font-size: 0.75rem;
-            color: #bcdce8;
+            font-size: 0.8rem;
+            color: #888;
         }
 
         /* Shortcut key style */
@@ -2228,6 +2234,123 @@
                 width: calc(100vw - 20px);
                 max-width: 320px;
                 right: 0;
+            }
+        }
+
+        /* Toggle Buttons Base Styles */
+        .notification-toggle,
+        .downloads-toggle,
+        .wishlist-toggle,
+        .infinite-scroll-toggle {
+            position: fixed;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: translateY(0);
+            will-change: transform, opacity;
+        }
+
+        /* Notification Toggle */
+        .notification-toggle {
+            top: 80px;
+            right: 40px;
+        }
+
+        /* Downloads Toggle */
+        .downloads-toggle {
+            top: 140px;
+            right: 40px;
+        }
+
+        /* Wishlist Toggle */
+        .wishlist-toggle {
+            bottom: 80px;
+            left: 40px;
+        }
+
+        /* Infinite Scroll Toggle */
+        .infinite-scroll-toggle {
+            bottom: 20px;
+            left: 40px;
+        }
+
+        /* Hide toggles when scrolling */
+        .scrolling .notification-toggle,
+        .scrolling .downloads-toggle,
+        .scrolling .wishlist-toggle,
+        .scrolling .infinite-scroll-toggle {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        /* Show toggles when not scrolling */
+        .notification-toggle,
+        .downloads-toggle,
+        .wishlist-toggle,
+        .infinite-scroll-toggle {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Hover effects */
+        .notification-toggle:hover,
+        .downloads-toggle:hover,
+        .wishlist-toggle:hover,
+        .infinite-scroll-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Active state */
+        .notification-toggle:active,
+        .downloads-toggle:active,
+        .wishlist-toggle:active,
+        .infinite-scroll-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* Panel transitions */
+        .notification-panel,
+        .downloads-panel,
+        .wishlist-panel {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Ensure panels are above other content */
+        .notification-panel,
+        .downloads-panel,
+        .wishlist-panel {
+            z-index: 999;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+
+            .notification-toggle,
+            .downloads-toggle {
+                right: 20px;
+            }
+
+            .wishlist-toggle,
+            .infinite-scroll-toggle {
+                left: 20px;
+            }
+
+            .notification-toggle {
+                top: 60px;
+            }
+
+            .downloads-toggle {
+                top: 120px;
+            }
+
+            .wishlist-toggle {
+                bottom: 70px;
+            }
+
+            .infinite-scroll-toggle {
+                bottom: 20px;
             }
         }
     </style>
@@ -2580,23 +2703,23 @@
         infiniteScrollToggle.textContent = '🔄 Enable Auto-Load';
 
         infiniteScrollToggle.style.cssText = `
-    position: fixed;
-    bottom: 16px;
-    left: 16px;
-    z-index: 1000;
-    padding: 6px 14px;
-    border-radius: 24px;
-    background: linear-gradient(135deg, #1fafed, #1c87d4, #1ce7eb);
-    color: white;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(31, 175, 237, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(6px);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+position: fixed;
+bottom: 16px;
+left: 16px;
+z-index: 1000;
+padding: 6px 14px;
+border-radius: 24px;
+background: linear-gradient(135deg, #1fafed, #1c87d4, #1ce7eb);
+color: white;
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.4px;
+border: none;
+cursor: pointer;
+box-shadow: 0 4px 15px rgba(31, 175, 237, 0.4);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+backdrop-filter: blur(6px);
+text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 `;
 
         infiniteScrollToggle.title = "Toggle Infinite Scroll";
@@ -2629,6 +2752,62 @@
         // Toggle Infinite Scroll (keep this logic)
         infiniteScrollToggle.addEventListener('click', toggleInfiniteScroll);
 
+        // Notification System
+        const notificationToggle = document.querySelector('.notification-toggle');
+        const notificationPanel = document.querySelector('.notification-panel');
+        const notificationClose = document.querySelector('.notification-close');
+        const notificationBadge = document.querySelector('.notification-badge');
+        let isNotificationPanelOpen = false;
+
+        function toggleNotificationPanel() {
+            isNotificationPanelOpen = !isNotificationPanelOpen;
+            notificationPanel.classList.toggle('active');
+
+            if (isNotificationPanelOpen) {
+                notificationBadge.style.display = 'none';
+                notificationPanel.style.transform = 'translateY(0) scale(1)';
+                notificationPanel.style.opacity = '1';
+                notificationPanel.style.visibility = 'visible';
+            } else {
+                notificationPanel.style.transform = 'translateY(-20px) scale(0.95)';
+                notificationPanel.style.opacity = '0';
+                notificationPanel.style.visibility = 'hidden';
+            }
+        }
+
+        notificationToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleNotificationPanel();
+        });
+
+        notificationClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleNotificationPanel();
+        });
+
+        document.addEventListener('click', (event) => {
+            if (isNotificationPanelOpen &&
+                !event.target.closest('.notification-panel') &&
+                !event.target.closest('.notification-toggle')) {
+                toggleNotificationPanel();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && isNotificationPanelOpen) {
+                toggleNotificationPanel();
+            }
+        });
+
+        const notificationItems = document.querySelectorAll('.notification-item');
+        notificationItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.backgroundColor = 'var(--light-gray)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.backgroundColor = '';
+            });
+        });
 
         // Category buttons
         categoryBtns.forEach(btn => {
@@ -2834,16 +3013,16 @@
                 : 'No overview available.';
 
             card.innerHTML = `
-                <img class="movie-poster" src="${posterUrl}" alt="${movie.title}" loading="lazy">
-                <div class="movie-info">
-                    <h3 class="movie-title">${movie.title}</h3>
-                    <div class="movie-rating">
-                        <span class="star"><i class="fa-solid fa-star"></i></span>
-                        <span>${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10</span>
-                    </div>
-                    <p class="movie-overview">${overview}</p>
-                </div>
-            `;
+        <img class="movie-poster" src="${posterUrl}" alt="${movie.title}" loading="lazy">
+        <div class="movie-info">
+            <h3 class="movie-title">${movie.title}</h3>
+            <div class="movie-rating">
+                <span class="star"><i class="fa-solid fa-star"></i></span>
+                <span>${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10</span>
+            </div>
+            <p class="movie-overview">${overview}</p>
+        </div>
+    `;
 
             card.addEventListener('click', () => openMovieModal(movie));
             return card;
@@ -2874,11 +3053,11 @@
             const trailerKey = await getMovieTrailer(movie.id);
             if (trailerKey) {
                 trailerContent.innerHTML = `
-                    <iframe class="trailer-iframe" 
-                            src="https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&rel=0" 
-                            allowfullscreen>
-                    </iframe>
-                `;
+            <iframe class="trailer-iframe" 
+                    src="https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&rel=0" 
+                    allowfullscreen>
+            </iframe>
+        `;
             } else {
                 trailerContent.innerHTML = '<div class="no-trailer"><i class="fa-solid fa-clapperboard">Trailer not available.</div>';
             }
@@ -3080,13 +3259,13 @@
                 const shimmer = document.createElement('div');
                 shimmer.className = 'movie-card';
                 shimmer.innerHTML = `
-                    <div style="background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%); animation: shimmer 1.5s infinite; height: 400px;"></div>
-                    <div style="padding: 20px;">
-                        <div style="height: 20px; background: rgba(255,255,255,0.1); margin-bottom: 10px; border-radius: 4px;"></div>
-                        <div style="height: 14px; background: rgba(255,255,255,0.1); margin-bottom: 10px; border-radius: 4px; width: 60%;"></div>
-                        <div style="height: 12px; background: rgba(255,255,255,0.1); border-radius: 4px;"></div>
-                    </div>
-                `;
+            <div style="background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%); animation: shimmer 1.5s infinite; height: 400px;"></div>
+            <div style="padding: 20px;">
+                <div style="height: 20px; background: rgba(255,255,255,0.1); margin-bottom: 10px; border-radius: 4px;"></div>
+                <div style="height: 14px; background: rgba(255,255,255,0.1); margin-bottom: 10px; border-radius: 4px; width: 60%;"></div>
+                <div style="height: 12px; background: rgba(255,255,255,0.1); border-radius: 4px;"></div>
+            </div>
+        `;
                 return shimmer;
             });
 
@@ -3096,11 +3275,11 @@
         // Add shimmer animation CSS
         const shimmerStyle = document.createElement('style');
         shimmerStyle.textContent = `
-            @keyframes shimmer {
-                0% { background-position: -200px 0; }
-                100% { background-position: calc(200px + 100%) 0; }
-            }
-        `;
+    @keyframes shimmer {
+        0% { background-position: -200px 0; }
+        100% { background-position: calc(200px + 100%) 0; }
+    }
+`;
         document.head.appendChild(shimmerStyle);
 
         // Downloads Management
@@ -3171,30 +3350,30 @@
 
             if (downloads.length === 0) {
                 downloadsList.innerHTML = `
-            <p style="text-align: center; color: #888; font-style: italic;">
-                No downloads yet
-            </p>
-        `;
+    <p style="text-align: center; color: #888; font-style: italic;">
+        No downloads yet
+    </p>
+`;
                 return;
             }
 
             // Add header with controls
             const headerHTML = `
-        <div class="downloads-header" style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="color: #4ecdc4; font-weight: bold;">${downloads.length} Download${downloads.length !== 1 ? 's' : ''}</span>
-            <div class="downloads-controls">
-                <button onclick="pauseAllDownloads()" class="control-btn pause-all" title="Pause All">
-                    <i class="fas fa-pause"></i>
-                </button>
-                <button onclick="resumeAllDownloads()" class="control-btn resume-all" title="Resume All">
-                    <i class="fas fa-play"></i>
-                </button>
-                <button onclick="removeAllDownloads()" class="control-btn remove-all" title="Remove All">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
-        </div>
-    `;
+<div class="downloads-header" style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="color: #4ecdc4; font-weight: bold;">${downloads.length} Download${downloads.length !== 1 ? 's' : ''}</span>
+    <div class="downloads-controls">
+        <button onclick="pauseAllDownloads()" class="control-btn pause-all" title="Pause All">
+            <i class="fas fa-pause"></i>
+        </button>
+        <button onclick="resumeAllDownloads()" class="control-btn resume-all" title="Resume All">
+            <i class="fas fa-play"></i>
+        </button>
+        <button onclick="removeAllDownloads()" class="control-btn remove-all" title="Remove All">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
+</div>
+`;
 
             const downloadsHTML = downloads.map(download => {
                 const statusColor = getStatusColor(download.status);
@@ -3203,33 +3382,33 @@
                 const canRemove = download.status !== 'Downloading';
 
                 return `
-            <div class="download-item" data-id="${download.id}">
-                <div class="download-item-header">
-                    <div class="download-item-title">${download.title}</div>
-                    <div class="download-item-controls">
-                        ${canPause ? `<button onclick="pauseDownload(${download.id})" class="control-btn pause" title="Pause">
-                            <i class="fas fa-pause"></i>
-                        </button>` : ''}
-                        ${canResume ? `<button onclick="resumeDownload(${download.id})" class="control-btn resume" title="Resume">
-                            <i class="fas fa-play"></i>
-                        </button>` : ''}
-                        ${canRemove ? `<button onclick="removeDownload(${download.id})" class="control-btn remove" title="Remove">
-                            <i class="fas fa-trash"></i>
-                        </button>` : ''}
-                    </div>
-                </div>
-                <div class="download-item-info">
-                    ${download.quality} • ${download.size} • <span style="color: ${statusColor};">${download.status}</span>
-                </div>
-                <div class="progress-bar" style="margin-top: 10px;">
-                    <div class="progress-fill" style="width: ${download.progress}%; transition: width 0.3s ease; background: ${getProgressColor(download.status)};"></div>
-                </div>
-                <div style="text-align: center; margin-top: 5px; font-size: 12px; color: #4ecdc4;">
-                    ${download.progress}% Complete
-                    ${download.status === 'Downloading' ? `<span style="margin-left: 10px; color: #28a745;">⬇️ ${getRandomSpeed()} MB/s</span>` : ''}
-                </div>
+    <div class="download-item" data-id="${download.id}">
+        <div class="download-item-header">
+            <div class="download-item-title">${download.title}</div>
+            <div class="download-item-controls">
+                ${canPause ? `<button onclick="pauseDownload(${download.id})" class="control-btn pause" title="Pause">
+                    <i class="fas fa-pause"></i>
+                </button>` : ''}
+                ${canResume ? `<button onclick="resumeDownload(${download.id})" class="control-btn resume" title="Resume">
+                    <i class="fas fa-play"></i>
+                </button>` : ''}
+                ${canRemove ? `<button onclick="removeDownload(${download.id})" class="control-btn remove" title="Remove">
+                    <i class="fas fa-trash"></i>
+                </button>` : ''}
             </div>
-        `;
+        </div>
+        <div class="download-item-info">
+            ${download.quality} • ${download.size} • <span style="color: ${statusColor};">${download.status}</span>
+        </div>
+        <div class="progress-bar" style="margin-top: 10px;">
+            <div class="progress-fill" style="width: ${download.progress}%; transition: width 0.3s ease; background: ${getProgressColor(download.status)};"></div>
+        </div>
+        <div style="text-align: center; margin-top: 5px; font-size: 12px; color: #4ecdc4;">
+            ${download.progress}% Complete
+            ${download.status === 'Downloading' ? `<span style="margin-left: 10px; color: #28a745;">⬇️ ${getRandomSpeed()} MB/s</span>` : ''}
+        </div>
+    </div>
+`;
             }).join('');
 
             downloadsList.innerHTML = headerHTML + downloadsHTML;
@@ -3555,25 +3734,25 @@
                 `<div class="download-status ${downloadStatus.status.toLowerCase()}">${downloadStatus.status}</div>` : '';
 
             card.innerHTML = `
-        ${statusElement}
-        <img class="movie-poster" src="${posterUrl}" alt="${movie.title}" loading="lazy">
-        <div class="movie-info">
-            <h3 class="movie-title">${movie.title}</h3>
-            <div class="movie-rating">
-                <span class="star"><i class="fa-solid fa-star"></i></span>
-                <span>${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10</span>
-            </div>
-            <p class="movie-overview">${overview}</p>
-            <div class="movie-actions">
-                <button class="btn-download" onclick="quickDownload('${movie.title}', event)">
-                    <i class="fas fa-download"></i>  Download
-                </button>
-                <button class="btn-info" onclick="openMovieModal(${JSON.stringify(movie).replace(/"/g, '&quot;')}, event)">
-                    <i class="fa-solid fa-circle-info"></i> Info
-                </button>
-            </div>
-        </div>
-    `;
+${statusElement}
+<img class="movie-poster" src="${posterUrl}" alt="${movie.title}" loading="lazy">
+<div class="movie-info">
+    <h3 class="movie-title">${movie.title}</h3>
+    <div class="movie-rating">
+        <span class="star"><i class="fa-solid fa-star"></i></span>
+        <span>${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10</span>
+    </div>
+    <p class="movie-overview">${overview}</p>
+    <div class="movie-actions">
+        <button class="btn-download" onclick="quickDownload('${movie.title}', event)">
+            <i class="fas fa-download"></i>  Download
+        </button>
+        <button class="btn-info" onclick="openMovieModal(${JSON.stringify(movie).replace(/"/g, '&quot;')}, event)">
+            <i class="fa-solid fa-circle-info"></i> Info
+        </button>
+    </div>
+</div>
+`;
 
             return card;
         }
@@ -3672,11 +3851,11 @@
             const trailerKey = await getMovieTrailer(movie.id);
             if (trailerKey) {
                 trailerContent.innerHTML = `
-            <iframe class="trailer-iframe" 
-                    src="https://www.youtube.com/embed/${trailerKey}?autoplay=0&mute=1&rel=0" 
-                    allowfullscreen>
-            </iframe>
-        `;
+    <iframe class="trailer-iframe" 
+            src="https://www.youtube.com/embed/${trailerKey}?autoplay=0&mute=1&rel=0" 
+            allowfullscreen>
+    </iframe>
+`;
             } else {
                 trailerContent.innerHTML = '<div class="no-trailer">🎬 Trailer not available.</div>';
             }
@@ -3690,24 +3869,24 @@
             // Create success toast
             const toast = document.createElement('div');
             toast.style.cssText = `
-        position: fixed;
-    top: 15px;
-    left: 15px;
-    background: rgba(40, 167, 69, 0.08); /* transparent green tint */
-    color: #28a745;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 13px;
-    z-index: 2000;
-    max-width: 260px;
-    word-wrap: break-word;
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(40, 167, 69, 0.2);
-    animation: slideInRight 0.3s ease;
-    `;
+position: fixed;
+top: 15px;
+left: 15px;
+background: rgba(40, 167, 69, 0.08); /* transparent green tint */
+color: #28a745;
+padding: 10px 16px;
+border-radius: 8px;
+font-weight: 600;
+font-size: 13px;
+z-index: 2000;
+max-width: 260px;
+word-wrap: break-word;
+box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+backdrop-filter: blur(6px);
+-webkit-backdrop-filter: blur(6px);
+border: 1px solid rgba(40, 167, 69, 0.2);
+animation: slideInRight 0.3s ease;
+`;
 
             toast.textContent = message;
             document.body.appendChild(toast);
@@ -3727,7 +3906,7 @@
             // Create error toast
             const toast = document.createElement('div');
             toast.style.cssText = `
-         position: fixed;
+ position: fixed;
 top: 15px;
 left: 15px;
 background: rgba(255, 255, 255, 0.05); 
@@ -3744,7 +3923,7 @@ animation: slideInRight 0.3s ease;
 max-width: 260px;
 word-wrap: break-word;
 border: 1px solid rgba(0, 255, 255, 0.2);
-    `;
+`;
 
             toast.textContent = message;
             document.body.appendChild(toast);
@@ -3763,147 +3942,147 @@ border: 1px solid rgba(0, 255, 255, 0.2);
         // Add enhanced styles
         const enhancedStyles = document.createElement('style');
         enhancedStyles.textContent = `
-    @keyframes slideInRight {
-        from {
-            transform: translateX(0);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOutRight {
-        from {
-            transform: translateX(100%);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 0;
-        }
-    }
+@keyframes slideInRight {
+from {
+    transform: translateX(0);
+    opacity: 0;
+}
+to {
+    transform: translateX(100%);
+    opacity: 1;
+}
+}
 
-    .downloads-header {
-        padding: 10px;
-        background: rgba(78, 205, 196, 0.1);
-        border-radius: 8px;
-        border: 1px solid rgba(78, 205, 196, 0.3);
-    }
+@keyframes slideOutRight {
+from {
+    transform: translateX(100%);
+    opacity: 1;
+}
+to {
+    transform: translateX(0);
+    opacity: 0;
+}
+}
 
-    .downloads-controls {
-        display: flex;
-        gap: 8px;
-    }
+.downloads-header {
+padding: 10px;
+background: rgba(78, 205, 196, 0.1);
+border-radius: 8px;
+border: 1px solid rgba(78, 205, 196, 0.3);
+}
 
-    .download-item-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 8px;
-    }
+.downloads-controls {
+display: flex;
+gap: 8px;
+}
 
-    .download-item-controls {
-        display: flex;
-        gap: 5px;
-        flex-shrink: 0;
-    }
+.download-item-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 8px;
+}
 
-    .control-btn {
-        background: rgba(78, 205, 196, 0.2);
-        border: 1px solid rgba(78, 205, 196, 0.5);
-        color: #4ecdc4;
-        padding: 4px 8px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 12px;
-        transition: all 0.3s ease;
-        min-width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.download-item-controls {
+display: flex;
+gap: 5px;
+flex-shrink: 0;
+}
 
-    .control-btn:hover {
-        background: rgba(78, 205, 196, 0.3);
-        transform: translateY(-1px);
-    }
+.control-btn {
+background: rgba(78, 205, 196, 0.2);
+border: 1px solid rgba(78, 205, 196, 0.5);
+color: #4ecdc4;
+padding: 4px 8px;
+border-radius: 4px;
+cursor: pointer;
+font-size: 12px;
+transition: all 0.3s ease;
+min-width: 30px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 
-    .control-btn.pause:hover {
-        background: rgba(255, 193, 7, 0.3);
-        color: #ffc107;
-        border-color: #ffc107;
-    }
+.control-btn:hover {
+background: rgba(78, 205, 196, 0.3);
+transform: translateY(-1px);
+}
 
-    .control-btn.resume:hover {
-        background: rgba(40, 167, 69, 0.3);
-        color: #28a745;
-        border-color: #28a745;
-    }
+.control-btn.pause:hover {
+background: rgba(255, 193, 7, 0.3);
+color: #ffc107;
+border-color: #ffc107;
+}
 
-    .control-btn.remove:hover,
-    .control-btn.remove-all:hover {
-        background: rgba(220, 53, 69, 0.3);
-        color: #dc3545;
-        border-color: #dc3545;
-    }
+.control-btn.resume:hover {
+background: rgba(40, 167, 69, 0.3);
+color: #28a745;
+border-color: #28a745;
+}
 
-    .control-btn.pause-all:hover {
-        background: rgba(255, 193, 7, 0.3);
-        color: #ffc107;
-        border-color: #ffc107;
-    }
+.control-btn.remove:hover,
+.control-btn.remove-all:hover {
+background: rgba(220, 53, 69, 0.3);
+color: #dc3545;
+border-color: #dc3545;
+}
 
-    .control-btn.resume-all:hover {
-        background: rgba(40, 167, 69, 0.3);
-        color: #28a745;
-        border-color: #28a745;
-    }
+.control-btn.pause-all:hover {
+background: rgba(255, 193, 7, 0.3);
+color: #ffc107;
+border-color: #ffc107;
+}
 
-    .download-item {
-        margin-bottom: 15px;
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-    }
+.control-btn.resume-all:hover {
+background: rgba(40, 167, 69, 0.3);
+color: #28a745;
+border-color: #28a745;
+}
 
-    .download-item:hover {
-        background: rgba(255, 255, 255, 0.08);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
+.download-item {
+margin-bottom: 15px;
+padding: 15px;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 8px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+transition: all 0.3s ease;
+}
 
-    .download-item-title {
-        font-weight: bold;
-        color: #fff;
-        margin-bottom: 5px;
-        flex: 1;
-        margin-right: 10px;
-    }
+.download-item:hover {
+background: rgba(255, 255, 255, 0.08);
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
-    .download-item-info {
-        font-size: 12px;
-        color: #ccc;
-        margin-bottom: 5px;
-    }
+.download-item-title {
+font-weight: bold;
+color: #fff;
+margin-bottom: 5px;
+flex: 1;
+margin-right: 10px;
+}
 
-    .progress-bar {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-        height: 8px;
-        overflow: hidden;
-    }
+.download-item-info {
+font-size: 12px;
+color: #ccc;
+margin-bottom: 5px;
+}
 
-    .progress-fill {
-        height: 100%;
-        background: #4ecdc4;
-        border-radius: 4px;
-        transition: width 0.3s ease;
-    }
+.progress-bar {
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+height: 8px;
+overflow: hidden;
+}
+
+.progress-fill {
+height: 100%;
+background: #4ecdc4;
+border-radius: 4px;
+transition: width 0.3s ease;
+}
 `;
         document.head.appendChild(enhancedStyles);
 
@@ -4124,7 +4303,7 @@ border: 1px solid rgba(0, 255, 255, 0.2);
         function showFooterNavigationMessage(categoryName) {
             const toast = document.createElement('div');
             toast.style.cssText = `
-       position: fixed;
+position: fixed;
 top: 15px;
 left: 50%;
 transform: translateX(-50%);
@@ -4141,12 +4320,12 @@ backdrop-filter: blur(12px);
 animation: footerToastSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 border: 1px solid rgba(255, 255, 255, 0.15);
 
-    `;
+`;
 
             toast.innerHTML = `
-        <i class="fas fa-film" style="margin-right: 8px;"></i>
-        Loading ${categoryName} movies...
-    `;
+<i class="fas fa-film" style="margin-right: 8px;"></i>
+Loading ${categoryName} movies...
+`;
 
             document.body.appendChild(toast);
 
@@ -4164,43 +4343,43 @@ border: 1px solid rgba(255, 255, 255, 0.15);
         // Add CSS animations for footer toast
         const footerToastStyle = document.createElement('style');
         footerToastStyle.textContent = `
-    @keyframes footerToastSlide {
-        from {
-            transform: translateX(-50%) translateY(-100px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes footerToastSlideOut {
-        from {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(-50%) translateY(-100px);
-            opacity: 0;
-        }
-    }
+@keyframes footerToastSlide {
+from {
+    transform: translateX(-50%) translateY(-100px);
+    opacity: 0;
+}
+to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+}
 
-    /* Enhanced footer link hover effects */
-    .footer-links a:hover {
-        color: #4ecdc4 !important;
-        transform: translateX(8px);
-        text-shadow: 0 2px 8px rgba(78, 205, 196, 0.4);
-    }
+@keyframes footerToastSlideOut {
+from {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+to {
+    transform: translateX(-50%) translateY(-100px);
+    opacity: 0;
+}
+}
 
-    .footer-links a:active {
-        transform: translateX(8px) scale(0.98);
-    }
+/* Enhanced footer link hover effects */
+.footer-links a:hover {
+color: #4ecdc4 !important;
+transform: translateX(8px);
+text-shadow: 0 2px 8px rgba(78, 205, 196, 0.4);
+}
 
-    /* Loading state for footer links */
-    .footer-links a .fa-spinner {
-        margin-right: 5px;
-    }
+.footer-links a:active {
+transform: translateX(8px) scale(0.98);
+}
+
+/* Loading state for footer links */
+.footer-links a .fa-spinner {
+margin-right: 5px;
+}
 `;
         document.head.appendChild(footerToastStyle);
 
@@ -4353,164 +4532,164 @@ border: 1px solid rgba(255, 255, 255, 0.15);
         // Wishlist Panel Styles
         const wishlistPanelStyle = document.createElement('style');
         wishlistPanelStyle.textContent = `
-        /* Wishlist Toggle Button */
+/* Wishlist Toggle Button */
 .wishlist-toggle {
-    position: fixed;
-    bottom: 90px;
-    left: 25px;
-    background: linear-gradient(135deg, #1c87d4 0%, #1fafed 100%);
-    color: #ffffff;
-    border: none;
-    padding: 16px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 17px;
-    z-index: 1600;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(31, 175, 237, 0.4);
-    backdrop-filter: blur(12px);
+position: fixed;
+bottom: 90px;
+left: 25px;
+background: linear-gradient(135deg, #1c87d4 0%, #1fafed 100%);
+color: #ffffff;
+border: none;
+padding: 16px;
+border-radius: 50%;
+cursor: pointer;
+font-size: 17px;
+z-index: 1600;
+transition: all 0.4s ease;
+box-shadow: 0 10px 30px rgba(31, 175, 237, 0.4);
+backdrop-filter: blur(12px);
 }
 
 .wishlist-toggle:hover {
-    transform: scale(1.08);
-    box-shadow: 0 12px 35px rgba(31, 175, 237, 0.5);
+transform: scale(1.08);
+box-shadow: 0 12px 35px rgba(31, 175, 237, 0.5);
 }
 
 
 /* Wishlist Panel */
 .wishlist-panel {
-    position: fixed;
-    top: 0;
-    left: -450px;
-    width: 450px;
-    height: 100vh;
-    background: linear-gradient(135deg, #1a1a35 0%, #2d1b69 100%);
-    border-right: 2px solid rgba(110, 0, 255, 0.3);
-    padding: 25px;
-    overflow-y: auto;
-    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1550;
-    backdrop-filter: blur(20px);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+position: fixed;
+top: 0;
+left: -450px;
+width: 450px;
+height: 100vh;
+background: linear-gradient(135deg, #1a1a35 0%, #2d1b69 100%);
+border-right: 2px solid rgba(110, 0, 255, 0.3);
+padding: 25px;
+overflow-y: auto;
+transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+z-index: 1550;
+backdrop-filter: blur(20px);
+box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .wishlist-panel.open {
-    left: 0;
+left: 0;
 }
 
 /* Wishlist Item */
 .wishlist-item {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    position: relative;
-    overflow: hidden;
+background: rgba(255, 255, 255, 0.06);
+border-radius: 15px;
+padding: 20px;
+margin-bottom: 18px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(15px);
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+gap: 18px;
+position: relative;
+overflow: hidden;
 }
 
 .wishlist-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(31, 175, 237, 0.1), rgba(31, 38, 237, 0.1));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 15px;
-    z-index: 1;
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, rgba(31, 175, 237, 0.1), rgba(31, 38, 237, 0.1));
+opacity: 0;
+transition: opacity 0.3s ease;
+border-radius: 15px;
+z-index: 1;
 }
 
 .wishlist-item:hover::before {
-    opacity: 1;
+opacity: 1;
 }
 
 .wishlist-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateX(-5px);
-    border-color: rgba(31, 175, 237, 0.3);
-    box-shadow: 0 8px 25px rgba(31, 175, 237, 0.2);
+background: rgba(255, 255, 255, 0.08);
+transform: translateX(-5px);
+border-color: rgba(31, 175, 237, 0.3);
+box-shadow: 0 8px 25px rgba(31, 175, 237, 0.2);
 }
 
 /* Poster */
 .wishlist-item-poster {
-    width: 60px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-    position: relative;
-    z-index: 2;
+width: 60px;
+height: 90px;
+object-fit: cover;
+border-radius: 8px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+transition: transform 0.3s ease;
+position: relative;
+z-index: 2;
 }
 
 .wishlist-item:hover .wishlist-item-poster {
-    transform: scale(1.05);
+transform: scale(1.05);
 }
 
 /* Info */
 .wishlist-item-info {
-    flex: 1;
-    position: relative;
-    z-index: 2;
+flex: 1;
+position: relative;
+z-index: 2;
 }
 
 .wishlist-item-title {
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 6px;
-    font-size: 1rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-    line-height: 1.4;
+font-weight: 600;
+color: #ffffff;
+margin-bottom: 6px;
+font-size: 1rem;
+text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+line-height: 1.4;
 }
 
 .wishlist-item-meta {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    gap: 8px;
-    margin-bottom: 4px;
+font-size: 12px;
+color: rgba(255, 255, 255, 0.8);
+display: flex;
+gap: 8px;
+margin-bottom: 4px;
 }
 
 .wishlist-item-rating {
-    font-size: 11px;
-    color: #ffd700;
-    display: flex;
-    gap: 4px;
-    align-items: center;
+font-size: 11px;
+color: #ffd700;
+display: flex;
+gap: 4px;
+align-items: center;
 }
 
 /* Remove Button */
 .wishlist-remove-btn {
-    background: rgba(237, 31, 31, 0.15); /* light red background */
-    border: 2px solid rgba(237, 31, 31, 0.3); /* soft red border */
-    color: #ed1f1f; /* red text */
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(10px);
-    z-index: 2;
+background: rgba(237, 31, 31, 0.15); /* light red background */
+border: 2px solid rgba(237, 31, 31, 0.3); /* soft red border */
+color: #ed1f1f; /* red text */
+font-size: 18px;
+cursor: pointer;
+transition: all 0.3s ease;
+border-radius: 50%;
+width: 35px;
+height: 35px;
+display: flex;
+align-items: center;
+justify-content: center;
+backdrop-filter: blur(10px);
+z-index: 2;
 }
 
 .wishlist-remove-btn:hover {
-    color: #fff;
-    background: linear-gradient(135deg, #ed1f1f, #a70000); /* strong red gradient */
-    border-color: transparent;
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(237, 31, 31, 0.4);
+color: #fff;
+background: linear-gradient(135deg, #ed1f1f, #a70000); /* strong red gradient */
+border-color: transparent;
+transform: scale(1.1);
+box-shadow: 0 4px 15px rgba(237, 31, 31, 0.4);
 }
 
 
@@ -4522,97 +4701,96 @@ border: 1px solid rgba(255, 255, 255, 0.15);
     right: 18px;
     font-size: 1.5rem;
     color: #1f26ed;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 50%;
     padding: 8px;
     z-index: 3;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    box-shadow: 0 3px 10px rgba(31, 38, 237, 0.12);
+  border: 1px solid rgba(31, 38, 237, 0.15);
 }
 
 .movie-card .wishlist-icon.filled {
-    background: transparent;
-    animation: heartPulse 1.5s ease-in-out;
+    background: rgba(31, 175, 237, 0.12);
     color: #1f26ed;
 }
 
-
 .movie-card .wishlist-icon:hover {
-    color: #c0c1c1;
-    background: transparent;
-    border-color: transparent;
+    color: #1f26ed;
+    background: rgba(31, 175, 237, 0.18);
+    box-shadow: 0 5px 14px rgba(31, 175, 237, 0.25);
 }
 
-
+ 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .wishlist-panel {
-        width: 100%;
-        left: -100%;
-    }
-
-    .wishlist-toggle {
-        bottom: 60px;
-        left: 15px;
-        padding: 12px;
-        font-size: 15px;
-    }
+.wishlist-panel {
+width: 100%;
+left: -100%;
 }
 
+.wishlist-toggle {
+bottom: 60px;
+left: 15px;
+padding: 12px;
+font-size: 15px;
+}
+}
+
+.wishlist-item {
+padding: 15px;
+gap: 12px;
+}
+
+.wishlist-item-poster {
+width: 50px;
+height: 75px;
+}
+
+.wishlist-item-title {
+font-size: 0.95rem;
+}
+
+.movie-card .wishlist-icon {
+top: 12px;
+right: 12px;
+padding: 15px;
+font-size: 1.5rem;
+}
+}
+@media (max-width: 480px) {
+.wishlist-toggle {
+bottom: 40px;
+left: 10px;
+padding: 10px;
+font-size: 13px;
+}
+    .wishlist-panel {
+        padding: 20px;
+    }
+
     .wishlist-item {
-        padding: 15px;
-        gap: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
     }
 
     .wishlist-item-poster {
-        width: 50px;
-        height: 75px;
+        width: 100%;
+        height: 200px;
     }
 
-    .wishlist-item-title {
-        font-size: 0.95rem;
-    }
-
-    .movie-card .wishlist-icon {
-        top: 12px;
-        right: 12px;
-        padding: 6px;
-        font-size: 1.2rem;
+    .wishlist-remove-btn {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        width: 20px;
+    height: 20px;
+    font-size: 10px;
     }
 }
- @media (max-width: 480px) {
-    .wishlist-toggle {
-        bottom: 40px;
-        left: 10px;
-        padding: 10px;
-        font-size: 13px;
-    }
-            .wishlist-panel {
-                padding: 20px;
-            }
-
-            .wishlist-item {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-            }
-
-            .wishlist-item-poster {
-                width: 100%;
-                height: 200px;
-            }
-
-            .wishlist-remove-btn {
-                position: absolute;
-                top: 25px;
-                left: 25px;
-                width: 20px;
-            height: 20px;
-            font-size: 10px;
-            }
-        }
-        `;
+`;
         document.head.appendChild(wishlistPanelStyle);
 
         // Wishlist Panel Toggle
@@ -4699,15 +4877,15 @@ border: 1px solid rgba(255, 255, 255, 0.15);
                     ? `${IMAGE_BASE_URL}${movie.poster_path}`
                     : 'https://via.placeholder.com/500x750/333/fff?text=No+Image';
                 return `
-                <div class="wishlist-item" data-id="${movie.id}">
-                    <img class="wishlist-item-poster" src="${posterUrl}" alt="${movie.title}">
-                    <div class="wishlist-item-info">
-                        <div class="wishlist-item-title">${movie.title}</div>
-                        <div class="wishlist-item-meta">${movie.release_date ? new Date(movie.release_date).getFullYear() : 'Unknown'} • ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10</div>
-                    </div>
-                    <button class="wishlist-remove-btn" title="Remove from wishlist" onclick="removeFromWishlist(${movie.id})"><i class="fas fa-trash"></i></button>
-                </div>
-                `;
+        <div class="wishlist-item" data-id="${movie.id}">
+            <img class="wishlist-item-poster" src="${posterUrl}" alt="${movie.title}">
+            <div class="wishlist-item-info">
+                <div class="wishlist-item-title">${movie.title}</div>
+                <div class="wishlist-item-meta">${movie.release_date ? new Date(movie.release_date).getFullYear() : 'Unknown'} • ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10</div>
+            </div>
+            <button class="wishlist-remove-btn" title="Remove from wishlist" onclick="removeFromWishlist(${movie.id})"><i class="fas fa-trash"></i></button>
+        </div>
+        `;
             }).join('');
         }
         // Remove from wishlist (for panel button)
@@ -4845,163 +5023,65 @@ border: 1px solid rgba(255, 255, 255, 0.15);
                 e.preventDefault();
                 const searchInput = document.querySelector('#searchInput');
                 if (searchInput) {
-                    searchInput.focus();
+                    searchInput.focus(); atio
                 }
             }
         });
 
-    </script>
-    <script> document.addEventListener('DOMContentLoaded', () => {
-            const notificationToggle = document.querySelector('.notification-toggle');
-            const notificationPanel = document.querySelector('.notification-panel');
-            const notificationClose = document.querySelector('.notification-close');
-            const notificationBadge = document.querySelector('.notification-badge');
-            const notificationItems = document.querySelectorAll('.notification-item');
-            let isNotificationPanelOpen = false;
-            let timeUpdateInterval;
+        // Add scroll-based visibility control
+        let lastScrollTop = 0;
+        let scrollTimeout;
+        const toggles = [
+            document.querySelector('.notification-toggle'),
+            document.querySelector('.downloads-toggle'),
+            document.querySelector('.wishlist-toggle'),
+            document.querySelector('.infinite-scroll-toggle')
+        ];
 
-            // Time formatting functions
-            function getRelativeTime(timestamp) {
-                const now = Date.now();
-                const diff = now - timestamp;
+        function handleScroll() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-                const seconds = Math.floor(diff / 1000);
-                const minutes = Math.floor(seconds / 60);
-                const hours = Math.floor(minutes / 60);
-                const days = Math.floor(hours / 24);
-                const weeks = Math.floor(days / 7);
-                const months = Math.floor(days / 30);
-                const years = Math.floor(days / 365);
+            // Clear any existing timeout
+            clearTimeout(scrollTimeout);
 
-                if (seconds < 60) {
-                    return seconds <= 1 ? 'just now' : `${seconds} seconds ago`;
-                } else if (minutes < 60) {
-                    return minutes === 1 ? '1 minute ago' : `${minutes} minutes ago`;
-                } else if (hours < 24) {
-                    return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
-                } else if (days < 7) {
-                    return days === 1 ? '1 day ago' : `${days} days ago`;
-                } else if (weeks < 4) {
-                    return weeks === 1 ? '1 week ago' : `${weeks} weeks ago`;
-                } else if (months < 12) {
-                    return months === 1 ? '1 month ago' : `${months} months ago`;
-                } else {
-                    return years === 1 ? '1 year ago' : `${years} years ago`;
+            // Hide toggles while scrolling
+            toggles.forEach(toggle => {
+                if (toggle) {
+                    toggle.style.opacity = '0';
+                    toggle.style.transform = 'translateY(20px)';
+                    toggle.style.pointerEvents = 'none';
                 }
-            }
+            });
 
-            function updateNotificationTimes() {
-                notificationItems.forEach(item => {
-                    const timestamp = parseInt(item.getAttribute('data-timestamp'));
-                    const timeElement = item.querySelector('.time');
-                    if (timestamp && timeElement) {
-                        timeElement.textContent = getRelativeTime(timestamp);
+            // Set a timeout to show toggles when scrolling stops
+            scrollTimeout = setTimeout(() => {
+                toggles.forEach(toggle => {
+                    if (toggle) {
+                        toggle.style.opacity = '1';
+                        toggle.style.transform = 'translateY(0)';
+                        toggle.style.pointerEvents = 'auto';
                     }
                 });
-            }
+            }, 150); // Show after 150ms of no scrolling
 
-            function startTimeUpdates() {
-                // Update immediately
-                updateNotificationTimes();
+            lastScrollTop = currentScroll;
+        }
 
-                // Update every 30 seconds
-                timeUpdateInterval = setInterval(updateNotificationTimes, 30000);
-            }
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
-            function stopTimeUpdates() {
-                if (timeUpdateInterval) {
-                    clearInterval(timeUpdateInterval);
-                    timeUpdateInterval = null;
-                }
-            }
+        // Add initial styles for smooth transitions
+        const toggleStyles = document.createElement('style');
+        toggleStyles.textContent = `
+    .notification-toggle,
+    .downloads-toggle,
+    .wishlist-toggle,
+    .infinite-scroll-toggle {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+`;
+        document.head.appendChild(toggleStyles);
 
-            function toggleNotificationPanel() {
-                isNotificationPanelOpen = !isNotificationPanelOpen;
-                notificationPanel.classList.toggle('active');
-
-                if (isNotificationPanelOpen) {
-                    notificationBadge.style.display = 'none';
-                    notificationPanel.style.transform = 'translateY(0) scale(1)';
-                    notificationPanel.style.opacity = '1';
-                    notificationPanel.style.visibility = 'visible';
-
-                    // Start time updates when panel is opened
-                    startTimeUpdates();
-                } else {
-                    notificationPanel.style.transform = 'translateY(-20px) scale(0.95)';
-                    notificationPanel.style.opacity = '0';
-                    notificationPanel.style.visibility = 'hidden';
-
-                    // Stop time updates when panel is closed to save resources
-                    stopTimeUpdates();
-                }
-            }
-
-            // Initialize with current timestamps (you can replace these with actual timestamps)
-            const now = Date.now();
-            const timestamps = [
-                now - (10 * 1000), // Just now
-                now - (1 * 60 * 1000), // 1 minute ago
-                now - (3 * 60 * 1000), // 3 minutes ago
-                now - (5 * 60 * 1000), // 5 minutes ago
-                now - (10 * 60 * 1000), // 10 minutes ago
-                now - (15 * 60 * 1000)  // 15 minutes ago
-            ];
-
-            notificationItems.forEach((item, index) => {
-                if (timestamps[index]) {
-                    item.setAttribute('data-timestamp', timestamps[index]);
-                }
-            });
-
-            // Update times initially
-            updateNotificationTimes();
-
-            notificationToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleNotificationPanel();
-            });
-
-            notificationClose.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleNotificationPanel();
-            });
-
-            document.addEventListener('click', (event) => {
-                if (
-                    isNotificationPanelOpen &&
-                    !event.target.closest('.notification-panel') &&
-                    !event.target.closest('.notification-toggle')
-                ) {
-                    toggleNotificationPanel();
-                }
-            });
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && isNotificationPanelOpen) {
-                    toggleNotificationPanel();
-                }
-
-                if ((event.ctrlKey || event.metaKey) && event.key === 'o') {
-                    event.preventDefault();
-                    toggleNotificationPanel();
-                }
-            });
-
-            notificationItems.forEach(item => {
-                item.addEventListener('mouseenter', () => {
-                    item.style.backgroundColor = '#333';
-                });
-                item.addEventListener('mouseleave', () => {
-                    item.style.backgroundColor = '';
-                });
-            });
-
-            // Clean up interval when page is unloaded
-            window.addEventListener('beforeunload', () => {
-                stopTimeUpdates();
-            });
-        });
     </script>
 </body>
 
