@@ -3416,13 +3416,13 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         <div class="download-item-header">
             <div class="download-item-title">${download.title}</div>
             <div class="download-item-controls">
-                ${canPause ? `<button onclick="pauseDownload(${download.id})" class="control-btn pause" title="Pause">
+                ${canPause ? `<button onclick="event.stopPropagation(); pauseDownload(${download.id})" class="control-btn pause" title="Pause">
                     <i class="fas fa-pause"></i>
                 </button>` : ''}
-                ${canResume ? `<button onclick="resumeDownload(${download.id})" class="control-btn resume" title="Resume">
+                ${canResume ? `<button onclick="event.stopPropagation(); resumeDownload(${download.id})" class="control-btn resume" title="Resume">
                     <i class="fas fa-play"></i>
                 </button>` : ''}
-                ${canRemove ? `<button onclick="removeDownload(${download.id})" class="control-btn remove" title="Remove">
+                ${canRemove ? `<button onclick="event.stopPropagation(); removeDownload(${download.id})" class="control-btn remove" title="Remove">
                     <i class="fas fa-trash"></i>
                 </button>` : ''}
             </div>
@@ -4918,7 +4918,7 @@ font-size: 13px;
                 <div class="wishlist-item-title">${movie.title}</div>
                 <div class="wishlist-item-meta">${movie.release_date ? new Date(movie.release_date).getFullYear() : 'Unknown'} • ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10</div>
             </div>
-            <button class="wishlist-remove-btn" title="Remove from wishlist" onclick="removeFromWishlist(${movie.id})"><i class="fas fa-trash"></i></button>
+            <button class="wishlist-remove-btn" title="Remove from wishlist" onclick="event.stopPropagation(); removeFromWishlist(${movie.id})"><i class="fas fa-trash"></i></button>
         </div>
         `;
             }).join('');
