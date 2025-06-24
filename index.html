@@ -1090,18 +1090,18 @@
             position: absolute;
             top: 15px;
             left: 15px;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 9px;
+            font-weight: 600;
             text-transform: uppercase;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             background-color: rgba(0, 0, 0, 0.4);
             color: #00f0ff;
             border: 1px solid rgba(0, 240, 255, 0.3);
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 6px rgba(0, 240, 255, 0.1);
             z-index: 10;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease-in-out;
         }
 
@@ -2353,6 +2353,21 @@
                 bottom: 20px;
             }
         }
+
+        /* Add this CSS near the other .downloads-toggle styles */
+        .downloads-toggle-bottom {
+            top: auto !important;
+            bottom: 80px !important;
+            right: 50px !important;
+            transition: all 0.4s ease;
+        }
+
+        @media (max-width: 768px) {
+            .downloads-toggle-bottom {
+                bottom: 35px !important;
+                right: 25px !important;
+            }
+        }
     </style>
 </head>
 
@@ -3003,6 +3018,7 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         function createMovieCard(movie) {
             const card = document.createElement('div');
             card.className = 'movie-card';
+            card.setAttribute('data-id', movie.id); // Add this line
 
             const posterUrl = movie.poster_path
                 ? `${IMAGE_BASE_URL}${movie.poster_path}`
@@ -3038,6 +3054,10 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
             const modalOverview = document.getElementById('modalOverview');
             const trailerContent = document.getElementById('trailerContent');
 
+            // Hide notification toggle when modal opens
+            const notificationToggle = document.querySelector('.notification-toggle');
+            if (notificationToggle) notificationToggle.style.display = 'none';
+
             // Set modal content
             modalTitle.textContent = movie.title;
             modalPoster.src = movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : 'https://via.placeholder.com/500x750/333/fff?text=No+Image';
@@ -3069,6 +3089,10 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         function closeMovieModal() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+
+            // Show notification toggle when modal closes
+            const notificationToggle = document.querySelector('.notification-toggle');
+            if (notificationToggle) notificationToggle.style.display = '';
 
             // Stop any playing videos
             const trailerContent = document.getElementById('trailerContent');
@@ -3342,6 +3366,12 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
                 downloadsToggle.innerHTML = isOpen
                     ? '<i class="fas fa-times"></i>'       // ✕ icon
                     : '<i class="fas fa-download"></i>';   // 📥 icon
+                // Move toggle button to bottom when panel is open
+                if (isOpen) {
+                    downloadsToggle.classList.add('downloads-toggle-bottom');
+                } else {
+                    downloadsToggle.classList.remove('downloads-toggle-bottom');
+                }
             }
         }
 
@@ -3386,13 +3416,13 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         <div class="download-item-header">
             <div class="download-item-title">${download.title}</div>
             <div class="download-item-controls">
-                ${canPause ? `<button onclick="pauseDownload(${download.id})" class="control-btn pause" title="Pause">
+                ${canPause ? `<button onclick="event.stopPropagation(); pauseDownload(${download.id})" class="control-btn pause" title="Pause">
                     <i class="fas fa-pause"></i>
                 </button>` : ''}
-                ${canResume ? `<button onclick="resumeDownload(${download.id})" class="control-btn resume" title="Resume">
+                ${canResume ? `<button onclick="event.stopPropagation(); resumeDownload(${download.id})" class="control-btn resume" title="Resume">
                     <i class="fas fa-play"></i>
                 </button>` : ''}
-                ${canRemove ? `<button onclick="removeDownload(${download.id})" class="control-btn remove" title="Remove">
+                ${canRemove ? `<button onclick="event.stopPropagation(); removeDownload(${download.id})" class="control-btn remove" title="Remove">
                     <i class="fas fa-trash"></i>
                 </button>` : ''}
             </div>
@@ -3719,6 +3749,7 @@ text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         function createMovieCard(movie) {
             const card = document.createElement('div');
             card.className = 'movie-card';
+            card.setAttribute('data-id', movie.id); // Add this line
 
             const posterUrl = movie.poster_path
                 ? `${IMAGE_BASE_URL}${movie.poster_path}`
@@ -3812,6 +3843,10 @@ ${statusElement}
             const modalVotes = document.getElementById('modalVotes');
             const modalOverview = document.getElementById('modalOverview');
             const trailerContent = document.getElementById('trailerContent');
+
+            // Hide notification toggle when modal opens
+            const notificationToggle = document.querySelector('.notification-toggle');
+            if (notificationToggle) notificationToggle.style.display = 'none';
 
             // Set modal content
             modalTitle.textContent = movie.title;
@@ -4883,7 +4918,7 @@ font-size: 13px;
                 <div class="wishlist-item-title">${movie.title}</div>
                 <div class="wishlist-item-meta">${movie.release_date ? new Date(movie.release_date).getFullYear() : 'Unknown'} • ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}/10</div>
             </div>
-            <button class="wishlist-remove-btn" title="Remove from wishlist" onclick="removeFromWishlist(${movie.id})"><i class="fas fa-trash"></i></button>
+            <button class="wishlist-remove-btn" title="Remove from wishlist" onclick="event.stopPropagation(); removeFromWishlist(${movie.id})"><i class="fas fa-trash"></i></button>
         </div>
         `;
             }).join('');
@@ -4897,6 +4932,17 @@ font-size: 13px;
                 saveWishlist();
                 updateWishlistList();
                 updateAllMovieCardWishlistIcons();
+                // Directly update the icon on the corresponding movie card
+                const card = document.querySelector(`.movie-card[data-id='${movieId}']`);
+                if (card) {
+                    const icon = card.querySelector('.wishlist-icon');
+                    if (icon) {
+                        icon.innerHTML = '<i class="far fa-bookmark"></i>';
+                        icon.classList.remove('filled');
+                        icon.classList.add('outline');
+                        icon.title = 'Add to wishlist';
+                    }
+                }
                 showSuccessMessage(`Removed from wishlist: ${title}`);
             }
         };
